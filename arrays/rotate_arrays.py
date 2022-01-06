@@ -28,6 +28,8 @@ def rotate(nums: List[int], k: int) -> None:
 def rotate2(nums: List[int], k: int):
     """
     Brute force
+    O(n*k) time
+    o(1) space
     """
     for _ in range(k):
         temp = nums[-1]
@@ -55,6 +57,8 @@ def rotate3(nums: List[int], k: int):
 def rotate4(nums: List[int], k: int):
     """
     Leetcode solution
+    O(n) time
+    O(1) space
     """
     def reverse(nums, start, end):
         while start < end:
@@ -70,6 +74,21 @@ def rotate4(nums: List[int], k: int):
 
     return nums
 
+
+def rotate5(nums: List[int], k: int):
+    """
+    O(n) time
+    O(n) space
+    """
+
+    temp = nums[:]
+
+    for index in range(len(nums)):
+        nums[index] = temp[(index+k)%len(nums)]
+    
+    return nums
+
+
 # %timeit rotate([1, 2, 3, 4, 5, 6, 7, 8], 4)
 # 567 ns ± 1.78 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 
@@ -81,3 +100,6 @@ def rotate4(nums: List[int], k: int):
 
 # %timeit rotate4([1, 2, 3, 4, 5, 6, 7, 8], 4)
 # 1.72 µs ± 13.3 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+
+# %timeit rotate5([1, 2, 3, 4, 5, 6, 7, 8], 4)
+# 1.15 µs ± 3.83 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
