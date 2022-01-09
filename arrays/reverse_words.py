@@ -22,21 +22,21 @@ def reverseWords(s: str) -> str:
 
 
 def reverseWords2(s: str) -> str:
-    temp = s.split(" ")
+    temp_list = s.split(" ")
     
     start = 0
-    end = len(temp) - 1
+    end = len(temp_list) - 1
 
     # reverse the array
     while start < end:
-        temp[start], temp[end] = temp[end], temp[start]
+        temp_list[start], temp_list[end] = temp_list[end], temp_list[start]
         start += 1
         end -= 1
         
-    pre = " ".join(temp)
-    res = ""
+    temp_str = " ".join(temp_list)
+    ret = ""
     # append to a new string variable from the end
-    for i in range(len(pre)-1, -1, -1):
-        res += pre[i]
+    for i in range(len(temp_str)-1, -1, -1):
+        ret += temp_str[i]
         
-    return res
+    return ret
